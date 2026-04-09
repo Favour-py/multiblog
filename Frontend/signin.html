@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <link rel="stylesheet" href="signin.css">
+</head>
+<body>
+    <main>
+        <img class="ciao" src="Ciao.svg" alt="img">
+        <section class="main-section">
+            <h1>Sign In</h1>
+            <form action="">
+                <input class="email" type="email" placeholder="Email" required>
+                <div class="pass">
+                    <input class="password" type="password" placeholder="password" required>
+                    <img src="eye-slash.svg" alt="img">
+                </div>
+                <div class="forgot">
+                    <label><input type="checkbox" name="remember" class="remember">Remember Me</label>
+                    <p>Forgot Password</p>
+                </div>
+                <button class="signin-btn" type="button" id="signin-btn">Sign In</button>
+                <p id="signin-message" style="color:red;font-size:13px;margin-top:8px;"></p>
+                <p class="or">Or Sign In With</p>
+                <div class="flex-3">
+                    <img src="facebook (1).svg" alt="img">
+                    <img src="twitter (1).svg" alt="img">
+                    <img src="google.svg" alt="img">
+                </div>
+                <div class="dont-have">
+                    <p>Don't have an Account yet?</p>
+                    <a class="signup" href="signup.html">Sign Up</a>
+                </div>
+            </form>
+        </section>
+    </main>
+    <script src="api.js"></script>
+    <script src="signin.js"></script>
+</body>
+</html>

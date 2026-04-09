@@ -1,0 +1,152 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'martel';
+}
+@font-face {
+    font-family: 'inter';
+    src: url('Inter,Martel,Open_Sans,Poppins,Roboto,etc/Inter/Inter-VariableFont_opsz,wght.ttf');
+}
+@font-face {
+    font-family: 'martel';
+    src: url('Inter,Martel,Open_Sans,Poppins,Roboto,etc/Martel/Martel-Bold.ttf');
+}
+@media screen and (max-width: 728px) {
+    body{
+        background: linear-gradient(to bottom,rgb(179,128,229), rgb(206,191,216));
+        height: auto;
+        min-height: 110vh;
+        overflow-x: hidden;
+        color: #fff;
+    }
+    .hero-img{
+        position: relative;
+        display: inline-block;
+        width: 115%;
+        
+    }
+    .menu-icon{
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+    .middle{
+        justify-items: center;
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    .profile-img-ctn{
+        position: absolute;
+        top: 44vh;
+    }
+    .profile-img{
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.79);
+-webkit-box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.79);
+-moz-box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.79);
+    }
+    .status-dot {
+        position: absolute;
+        top: 51px;
+        right: 3px;
+        width: 15px;
+        height: 15px;
+        background-color: #00ff00;
+        border-radius: 50%;
+        border: 2px solid white;
+    }
+    .profile-name{
+        margin-top: 5vh;
+        color: rgb(80,66,155);
+        font-size: 22px;
+    }
+    .counts{
+        display: flex;
+        column-gap: 20px;
+        font-size: 18px;
+        margin-top: 3vh;
+        margin-left: 5vw;
+    }
+    .post-counts,.followers-counts,.following-counts{
+        justify-self: center;
+        font-size: 25px;
+    }
+     .posts-ctn{
+        /* background-color: firebrick; */
+        display: grid;
+        grid-template-columns: 1fr;
+        row-gap: 1px;
+    }
+    .post-con{
+        background-color: rgb(144,101,217);
+        height: auto;
+        margin-top: 10vh;
+        width: 90%;
+        border-radius: 30px;
+        justify-self: center;
+        padding: 5% 5%;
+        color: #fff;
+        
+    }
+    .post1{
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    .top1{
+        display: flex;
+        justify-content: space-between;
+    }
+    .top-left1{
+        display: flex;
+        column-gap: 10px;
+    }
+    .p1-profile{
+        border-radius: 50%;
+        border: 3px solid rgb(99,90,143);
+        height: 64px;
+    }
+    .top-left1-info{
+        display: grid;
+        grid-template-columns: 1fr;
+        margin-top: 3px;
+    }
+    .active-status-flex{
+        display: flex;
+        column-gap: 5px;
+    }
+    .active-status-flex img{
+        height: 20px;
+        width: 20px;
+        margin-top: 3px;
+    }
+    .top-right1{
+        margin-top: 3px;
+        margin-right: -20px;
+    }
+    .post-content{
+        margin-top: 5vh;
+    }
+    .down-section{
+        display: flex;
+        column-gap: 40px;
+        margin-top: 10px;
+    }
+    .like-count-ctn,.comment-count-ctn,.share-count-ctn{
+        display: flex;
+        column-gap: 10px;
+    }
+    .share-count-ctn{
+        margin-left: 10vw;
+    }
+    .post-image{
+        width: 110%;
+        max-width: 307px;
+        max-height: 210px;
+    }
+    .post-title{
+        margin-bottom: 10px;
+    }
+}

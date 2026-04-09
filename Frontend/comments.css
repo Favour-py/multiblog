@@ -1,0 +1,104 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'martel';
+}
+@font-face {
+    font-family: 'inter';
+    src: url('Inter,Martel,Open_Sans,Poppins,Roboto,etc/Inter/Inter-VariableFont_opsz,wght.ttf');
+}
+@font-face {
+    font-family: 'martel';
+    src: url('Inter,Martel,Open_Sans,Poppins,Roboto,etc/Martel/Martel-Bold.ttf');
+}
+@media screen and (max-width: 728px) {
+    main{
+        background-color: rgb(117,80,208);
+        height: auto;
+        min-height: 20vh;
+        overflow-x: hidden;
+    }
+    .main-section{
+        background: linear-gradient(to bottom,rgb(111,91,171), rgb(143,120,177));
+        height: auto;
+        min-height: 110vh;
+    }
+    .top1{
+        margin-left: 2vw;
+        display: flex;
+        justify-content: space-between;
+        padding-top: 5vh;
+        color: #fff;
+    }
+    .top-left1{
+        display: flex;
+        column-gap: 10px;
+    }
+    .top-left1-info{
+        display: grid;
+        grid-template-columns: 1fr;
+        margin-top: 3px;
+    }
+    .active-status-flex{
+        display: flex;
+        column-gap: 5px;
+    }
+    .active-status-flex img{
+        height: 20px;
+        width: 20px;
+        margin-top: 3px;
+    }
+    .top-right1{
+        margin-top: 3px;
+        margin-right: -10px;
+    }
+    .comments-section{
+        display: grid;
+        grid-template-columns: 1fr;
+        column-gap: 10px;
+        color: rgb(89,58,196);
+        margin-left: 2vw;
+        color: #fff;
+        overflow-x: hidden;
+    }
+    .comment1{
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    .comment1-ctn{
+        display: flex;
+        column-gap: 10px;
+        margin-top: 30px;
+    }
+    .comment1-img{
+        width: 60px;
+        max-width: 60px;
+    }
+    .comment-content{
+        background-color: rgb(195,193,209);
+        border-radius: 25px;
+        padding-left: 5%;
+        height: auto;
+        width: 80%;
+        max-width: 80%;
+    }
+    .comment-content-img{
+        max-width: 100%;
+        height: auto;
+    }
+    .author-name{
+        font-size: 20px;
+        color: rgb(117,80,208);
+    }
+    .author-comment{
+        height: auto;
+    }
+    .comment-condition{
+        margin-left: 22vw;
+        display: flex;
+        column-gap: 50px;
+        margin-top: 10px;
+        font-size: 14px;
+    }
+}

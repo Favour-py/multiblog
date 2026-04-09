@@ -1,0 +1,13 @@
+{
+  "liveServer.settings.donotReload": true,
+  "liveServer.settings.donotShowInfoMsg": true,
+  "liveServer.settings.ignoreFiles": [
+    "**/*.py",
+    "**/*.sqlite3",
+    "**/db.sqlite3",
+    "**/__pycache__/**",
+    "**/migrations/**",
+    "**/media/**",
+    "media/**"
+  ]
+}
