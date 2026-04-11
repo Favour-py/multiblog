@@ -24,9 +24,8 @@ def serve_frontend(filename):
     def view(request, **kwargs):
         # Try multiple possible paths
         possible_paths = [
+            os.path.join(settings.BASE_DIR, 'Frontend', filename),
             os.path.join(settings.BASE_DIR, 'frontend', filename),
-            os.path.join(os.path.dirname(settings.BASE_DIR), 'frontend', filename),
-            os.path.join('/opt/render/project/src', 'frontend', filename),
         ]
         for filepath in possible_paths:
             if os.path.exists(filepath):
@@ -62,5 +61,5 @@ urlpatterns = [
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + [
     re_path(r'^(?P<path>.+\.(css|js|svg|png|jpg|jpeg|ttf|ico|txt))$',
-            serve, {'document_root': settings.BASE_DIR / 'frontend'}),
+            serve, {'document_root': settings.BASE_DIR / 'Frontend'}),
 ]
