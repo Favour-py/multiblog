@@ -22,7 +22,6 @@ schema_view = get_schema_view(
 
 def serve_frontend(filename):
     def view(request, **kwargs):
-        # Try multiple possible paths
         possible_paths = [
             os.path.join(settings.BASE_DIR, 'Frontend', filename),
             os.path.join(settings.BASE_DIR, 'frontend', filename),
@@ -31,7 +30,11 @@ def serve_frontend(filename):
             if os.path.exists(filepath):
                 with open(filepath, 'r', encoding='utf-8') as f:
                     return HttpResponse(f.read(), content_type='text/html')
-        return HttpResponse(f'File not found. BASE_DIR={settings.BASE_DIR}', status=404)
+        try:
+            dirs = str(os.listdir(settings.BASE_DIR))
+        except Exception as e:
+            dirs = str(e)
+        return HttpResponse(f'File {filename} not found. BASE_DIR={settings.BASE_DIR}. Contents={dirs}', status=404)
     return view
 
 urlpatterns = [
