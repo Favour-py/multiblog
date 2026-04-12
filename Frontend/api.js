@@ -1,4 +1,7 @@
-const BASE = 'http://127.0.0.1:8000/api';
+const BASE = window.location.port === '5500' ? 'http://127.0.0.1:8000/api' : '/api';
+
+const isLocal = window.location.port === '5500';
+const url = (path) => isLocal ? path + '.html' : '/' + path.replace('.html', '') + '/';
 
 const api = {
   token: () => localStorage.getItem('access'),
@@ -93,11 +96,11 @@ const api = {
 
   logout() {
     localStorage.clear();
-    window.location.href = 'signin.html';
+    window.location.href = url('signin.html');
   },
 
   requireAuth() {
-    if (!this.token()) window.location.href = 'signin.html';
+    if (!this.token()) window.location.href = url('signin.html');
   },
 
   avatar(url) {

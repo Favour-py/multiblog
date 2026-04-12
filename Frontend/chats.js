@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // back button
   const backBtn = document.querySelector('.back');
-  if (backBtn) backBtn.addEventListener('click', () => window.location.href = 'message.html');
+  if (backBtn) backBtn.addEventListener('click', () => window.location.href = url('message.html'));
 
   // poll for new messages every 3 seconds
   pollInterval = setInterval(loadMessages, 3000);

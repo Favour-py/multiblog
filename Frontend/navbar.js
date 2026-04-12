@@ -5,15 +5,15 @@ document.addEventListener('DOMContentLoaded', async () => {
   const nav = document.createElement('nav');
   nav.className = 'bottom-nav';
   nav.innerHTML = `
-    <a href="home.html" class="${page === 'home.html' ? 'active' : ''}">
+    <a href="${url('home.html')}" class="${page === 'home.html' || page === 'home' ? 'active' : ''}">
       <img src="Vector (5).svg" alt="home">
       <span>Home</span>
     </a>
-    <a href="message.html" class="${page === 'message.html' ? 'active' : ''}">
+    <a href="${url('message.html')}" class="${page === 'message.html' || page === 'messages' ? 'active' : ''}">
       <img src="Vector (6).svg" alt="messages">
       <span>Messages</span>
     </a>
-    <a href="profile.html?u=${me?.username || ''}" class="${page === 'profile.html' ? 'active' : ''}">
+    <a href="${url('profile.html')}?u=${me?.username || ''}" class="${page === 'profile.html' || page === 'profile' ? 'active' : ''}">
       <img id="nav-avatar" src="${api.avatar(me?.profile_picture)}" style="width:28px;height:28px;border-radius:50%;object-fit:cover;" alt="profile">
       <span>Profile</span>
     </a>

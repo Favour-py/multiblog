@@ -32,7 +32,7 @@ async function loadProfile() {
       btn.textContent = 'Edit Profile';
       btn.style.background = '#eee';
       btn.style.color = '#333';
-      btn.onclick = () => window.location.href = 'edit_profile.html';
+      btn.onclick = () => window.location.href = url('edit_profile.html');
     } else {
       btn.textContent = user.is_following ? 'Unfollow' : 'Follow';
       btn.style.background = user.is_following ? '#eee' : '#6c63ff';

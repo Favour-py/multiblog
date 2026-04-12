@@ -15,7 +15,7 @@ async function loadConversations() {
       const lastMsg = conv.last_message;
       const unread = conv.unread_count;
       return `
-      <div class="chat1" onclick="window.location.href='chats.html?conv=${conv.id}&u=${other.username}'" style="cursor:pointer;">
+      <div class="chat1" onclick="window.location.href=url('chats.html')+'?conv=${conv.id}&u=${other.username}'" style="cursor:pointer;">
         <img src="${api.avatar(other.profile_picture)}" alt="${other.username}" style="width:48px;height:48px;border-radius:50%;object-fit:cover;">
         <div class="chat-list-div">
           <p class="sender-name">${other.username}</p>
@@ -58,7 +58,7 @@ async function startChat() {
   err.textContent = '';
   try {
     const conv = await api.startConversation(username);
-    window.location.href = `chats.html?conv=${conv.id}&u=${username}`;
+    window.location.href = url('chats.html') + `?conv=${conv.id}&u=${username}`;
   } catch (e) {
     err.textContent = e.error || 'User not found.';
   }

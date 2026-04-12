@@ -11,7 +11,7 @@ async function loadStories() {
     const users = await api.getFollowing(me.username);
     if (!users.length) return;
     storiesRow.innerHTML = users.slice(0, 6).map(u => `
-      <div class="profile-1" onclick="window.location.href='profile.html?u=${u.username}'">
+      <div class="profile-1" onclick="window.location.href=url('profile.html')+'?u=${u.username}'">
         <img src="${api.avatar(u.profile_picture)}" alt="${u.username}" style="width:48px;height:48px;border-radius:50%;object-fit:cover;cursor:pointer;">
         <p style="font-size:11px;text-align:center;margin-top:4px;">${u.username}</p>
       </div>`).join('');
@@ -27,7 +27,7 @@ function postCard(p) {
     <div class="post1">
       <div class="top1">
         <div class="top-left1">
-          <div class="p1-profile" onclick="window.location.href='profile.html?u=${p.author.username}'" style="cursor:pointer;">
+          <div class="p1-profile" onclick="window.location.href=url('profile.html')+'?u=${p.author.username}'" style="cursor:pointer;">
             <img src="${api.avatar(p.author.profile_picture)}" alt="${p.author.username}" style="width:40px;height:40px;border-radius:50%;object-fit:cover;">
           </div>
           <div class="top-left1-info">

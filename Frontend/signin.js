@@ -24,7 +24,7 @@ document.getElementById('signin-btn').addEventListener('click', async () => {
       localStorage.setItem('access', data.access);
       localStorage.setItem('refresh', data.refresh);
       localStorage.setItem('user', JSON.stringify(data.user));
-      window.location.assign('home.html');
+      window.location.assign(url('home.html'));
     } else {
       const errorText = Object.values(data).flat().join(' ');
       msg.textContent = errorText || 'Login failed.';

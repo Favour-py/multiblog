@@ -163,7 +163,7 @@ document.getElementById('signup-btn').addEventListener('click', async () => {
       }
       msg.style.color = '#2ecc71';
       msg.textContent = '✓ Account created! Redirecting...';
-      window.location.assign('signin.html');
+      window.location.assign(url('signin.html'));
     } else {
       const errorText = Object.entries(data)
         .map(([f, v]) => `${f}: ${[v].flat().join(', ')}`)
