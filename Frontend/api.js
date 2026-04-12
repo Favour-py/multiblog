@@ -1,7 +1,7 @@
-const BASE = window.location.port === '5500' ? 'http://127.0.0.1:8000/api' : '/api';
+const BASE = window.location.port === '5500' ? 'http://127.0.0.1:8000/api' : 'https://multiblog-qdr2.onrender.com/api';
 
-const isLocal = window.location.port === '5500';
-const url = (path) => isLocal ? path + '.html' : '/' + path.replace('.html', '') + '/';
+const isLocal = window.location.hostname === '127.0.0.1';
+const url = (path) => path;
 
 const api = {
   token: () => localStorage.getItem('access'),

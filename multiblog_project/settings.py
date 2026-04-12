@@ -104,7 +104,7 @@ SIMPLE_JWT = {
     "ROTATE_REFRESH_TOKENS": True,
 }
 
-CORS_ALLOWED_ORIGINS = config('CORS_ALLOWED_ORIGINS', default='http://localhost:3000,http://localhost:8000,http://127.0.0.1:5500,http://localhost:5500', cast=Csv())
+CORS_ALLOWED_ORIGINS = config('CORS_ALLOWED_ORIGINS', default='http://localhost:3000,http://localhost:8000,http://127.0.0.1:5500,http://localhost:5500,https://gilded-sundae-0b994a.netlify.app', cast=Csv())
 
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
