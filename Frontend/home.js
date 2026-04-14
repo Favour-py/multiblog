@@ -44,7 +44,7 @@ function postCard(p) {
       <div class="post-content">
         <p class="post-title">${p.title}</p>
         <p style="font-size:13px;color:#555;margin:4px 0 8px;">${p.content.substring(0, 200)}${p.content.length > 200 ? '...' : ''}</p>
-        ${p.image ? `<img class="post-image" src="http://127.0.0.1:8000${p.image}" alt="post image">` : ''}
+        ${p.image ? `<img class="post-image" src="${api.avatar(p.image)}" alt="post image" style="width:100%;border-radius:12px;margin-top:8px;">` : ''}
       </div>
       <div class="down-section">
         <div class="like-count-ctn" onclick="event.preventDefault();event.stopPropagation();event.stopImmediatePropagation();toggleLike('${p.id}');return false;" style="cursor:pointer;">
@@ -191,7 +191,24 @@ function closeNewPostModal() {
 document.addEventListener('DOMContentLoaded', () => {
   loadStories();
   loadPosts();
-  // Poll for count updates every 10 seconds without re-rendering
+
+  // Image preview for new post
+  document.getElementById('post-image-input').addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    const preview = document.getElementById('post-image-preview');
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (ev) => {
+        preview.src = ev.target.result;
+        preview.style.display = 'block';
+      };
+      reader.readAsDataURL(file);
+    } else {
+      preview.style.display = 'none';
+    }
+  });
+
+  // Poll for count updates every 10 seconds
   setInterval(async () => {
     try {
       const posts = await api.getPosts();
@@ -209,16 +226,34 @@ async function submitNewPost() {
   const title = document.getElementById('post-title').value.trim();
   const content = document.getElementById('post-content').value.trim();
   const category = document.getElementById('post-category').value;
+  const imageFile = document.getElementById('post-image-input').files[0];
   const errEl = document.getElementById('post-error');
   errEl.textContent = '';
+
   try {
-    await api.createPost({ title, content, category });
-    closeNewPostModal();
-    document.getElementById('post-title').value = '';
-    document.getElementById('post-content').value = '';
-    loadPosts();
+    const formData = new FormData();
+    formData.append('title', title);
+    formData.append('content', content);
+    formData.append('category', category);
+    if (imageFile) formData.append('image', imageFile);
+
+    const res = await fetch(`${BASE}/posts/posts/`, {
+      method: 'POST',
+      headers: { 'Authorization': `Bearer ${api.token()}` },
+      body: formData
+    });
+    const data = await res.json();
+    if (res.ok) {
+      closeNewPostModal();
+      document.getElementById('post-title').value = '';
+      document.getElementById('post-content').value = '';
+      document.getElementById('post-image-input').value = '';
+      document.getElementById('post-image-preview').style.display = 'none';
+      loadPosts();
+    } else {
+      errEl.textContent = Object.values(data).flat().join(' ') || 'Failed to create post.';
+    }
   } catch (err) {
-    const errors = Object.values(err).flat().join(' ');
-    errEl.textContent = errors || 'Failed to create post.';
+    errEl.textContent = 'Network error.';
   }
 }
