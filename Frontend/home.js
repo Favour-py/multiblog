@@ -93,13 +93,14 @@ function commentHTML(c, postId) {
 
 // ── Load posts ─────────────────────────────────────────────────────────────
 async function loadPosts() {
+  feed.innerHTML = '<p style="text-align:center;color:#fff;padding:40px;">Loading posts...</p>';
   try {
     const posts = await api.getPosts();
     feed.innerHTML = posts.length
       ? posts.map(postCard).join('')
       : '<p style="text-align:center;color:#888;padding:40px;">No posts yet. Be the first!</p>';
   } catch (_) {
-    feed.innerHTML = '<p style="text-align:center;color:red;padding:20px;">Failed to load posts.</p>';
+    feed.innerHTML = '<p style="text-align:center;color:#fff;padding:20px;">Server is waking up... <br><button onclick="loadPosts()" style="margin-top:10px;padding:8px 20px;border-radius:20px;background:#6c63ff;color:#fff;border:none;cursor:pointer;">Retry</button></p>';
   }
 }
 
