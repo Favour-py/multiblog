@@ -106,7 +106,16 @@
     .p1-profile{
         border-radius: 50%;
         border: 3px solid rgb(99,90,143);
-        height: 64px;
+        height: 44px;
+        width: 44px;
+        overflow: hidden;
+        flex-shrink: 0;
+    }
+    .p1-profile img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
     }
     .top-left1-info{
         display: grid;

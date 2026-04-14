@@ -106,7 +106,8 @@ const api = {
   avatar(url) {
     if (!url) return 'Ellipse 221 (1).svg';
     if (url.startsWith('http')) return url;
-    return `http://127.0.0.1:8000${url}`;
+    const mediaBase = window.location.port === '5500' ? 'http://127.0.0.1:8000' : 'https://multiblog-qdr2.onrender.com';
+    return `${mediaBase}${url}`;
   },
 
   timeAgo(dateStr) {

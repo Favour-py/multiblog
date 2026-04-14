@@ -130,7 +130,7 @@ document.getElementById('signup-btn').addEventListener('click', async () => {
   btn.disabled = true;
 
   try {
-    const res = await fetch('http://127.0.0.1:8000/api/auth/signup/', {
+    const res = await fetch(`${BASE}/auth/signup/`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -142,10 +142,9 @@ document.getElementById('signup-btn').addEventListener('click', async () => {
     const data = await res.json();
 
     if (res.ok) {
-      // Upload profile picture if selected
       const picFile = document.getElementById('profile-pic').files[0];
       if (picFile) {
-        const loginRes = await fetch('http://127.0.0.1:8000/api/auth/login/', {
+        const loginRes = await fetch(`${BASE}/auth/login/`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email, password })
@@ -154,7 +153,7 @@ document.getElementById('signup-btn').addEventListener('click', async () => {
         if (loginRes.ok) {
           const formData = new FormData();
           formData.append('profile_picture', picFile);
-          await fetch('http://127.0.0.1:8000/api/auth/me/', {
+          await fetch(`${BASE}/auth/me/`, {
             method: 'PATCH',
             headers: { 'Authorization': `Bearer ${loginData.access}` },
             body: formData

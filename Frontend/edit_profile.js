@@ -36,7 +36,7 @@ async function saveProfile() {
   if (picFile) formData.append('profile_picture', picFile);
 
   try {
-    const res = await fetch('http://127.0.0.1:8000/api/auth/me/', {
+    const res = await fetch(`${BASE}/auth/me/`, {
       method: 'PATCH',
       headers: { 'Authorization': `Bearer ${api.token()}` },
       body: formData
@@ -44,12 +44,10 @@ async function saveProfile() {
     const data = await res.json();
 
     if (res.ok) {
-      // Update localStorage with new profile data including picture URL
       const current = api.user();
       localStorage.setItem('user', JSON.stringify({ ...current, ...data }));
       msg.style.color = '#2ecc71';
       msg.textContent = '✓ Profile updated!';
-      // Update avatar preview with actual saved URL
       if (data.profile_picture) {
         document.getElementById('edit-avatar').src = api.avatar(data.profile_picture);
       }
@@ -61,7 +59,7 @@ async function saveProfile() {
       btn.textContent = 'Save Changes';
       btn.disabled = false;
     }
-  } catch (_) {
+  } catch (err) {
     msg.style.color = '#e74c3c';
     msg.textContent = 'Network error.';
     btn.textContent = 'Save Changes';

@@ -1,3 +1,8 @@
+document.getElementById('eye-toggle').addEventListener('click', () => {
+  const p = document.querySelector('.password');
+  p.type = p.type === 'password' ? 'text' : 'password';
+});
+
 document.getElementById('signin-btn').addEventListener('click', async () => {
   const email = document.querySelector('.email').value.trim();
   const password = document.querySelector('.password').value;
@@ -13,7 +18,7 @@ document.getElementById('signin-btn').addEventListener('click', async () => {
   btn.disabled = true;
 
   try {
-    const res = await fetch('http://127.0.0.1:8000/api/auth/login/', {
+    const res = await fetch(`${BASE}/auth/login/`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password })
