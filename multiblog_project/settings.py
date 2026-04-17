@@ -29,6 +29,8 @@ INSTALLED_APPS = [
     'posts',
     'comments',
     'chat',
+    'cloudinary_storage',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -120,5 +122,15 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+# Cloudinary
+import cloudinary
+cloudinary.config(
+    cloud_name=config('CLOUDINARY_CLOUD_NAME', default='dkhqll8zk'),
+    api_key=config('CLOUDINARY_API_KEY', default='912758442973238'),
+    api_secret=config('CLOUDINARY_API_SECRET', default='i7G4nJLeA0iUu6Sz3UqDU3KDfPs'),
+    secure=True
+)
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
